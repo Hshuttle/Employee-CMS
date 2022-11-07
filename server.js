@@ -104,7 +104,7 @@ function addDepartment() {
 
 function addRole() {
   inquirer
-    .prompt(
+    .prompt([
       {
         type: "input",
         name: "title",
@@ -114,8 +114,8 @@ function addRole() {
         type: "input",
         name: "salary",
         message: "What is the new roles salary?",
-      }
-    )
+      },
+    ])
     .then((answers) => {
       db.promise()
         .query("INSERT INTO roles SET ?", {
@@ -135,7 +135,7 @@ function addRole() {
 
 function addEmployee() {
   inquirer
-    .prompt(
+    .prompt([
       {
         type: "input",
         name: "first",
@@ -145,11 +145,11 @@ function addEmployee() {
         type: "input",
         name: "last",
         message: "What is the new employees last name?",
-      }
-    )
+      },
+    ])
     .then((answers) => {
       db.promise()
-        .query("INSERT INTO roles SET ?", {
+        .query("INSERT INTO employee SET ?", {
           first_name: answers.first,
           last_name: answers.last,
         })
